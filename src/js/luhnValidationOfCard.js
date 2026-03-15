@@ -7,7 +7,7 @@ export default function luhnValidationOfCard(cardNumber) {
     throw new Error('The `cardNumber` parameter must be a string containing the card number');
   }
 
-  const { length } = cardNumber;
+  let { length } = cardNumber;
   let isEven = false;
   let checksum = 0;
 
