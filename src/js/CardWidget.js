@@ -46,7 +46,7 @@ export default class CardWidget {
     return '.card-validator-message';
   }
 
-  static get paymentSystemImageSelector() {
+  static get paySystemImageSelector() {
     return '.payment-system-img';
   }
 
@@ -57,7 +57,7 @@ export default class CardWidget {
     this.input = this.element.querySelector(CardWidget.inputSelector);
     this.submit = this.element.querySelector(CardWidget.submitSelector);
     this.message = this.element.querySelector(CardWidget.messageSelector);
-    this.paymentSystemImages = [...this.element.querySelectorAll(CardWidget.paymentSystemImageSelector)];
+    this.paySystemImages = [...this.element.querySelectorAll(CardWidget.paySystemImageSelector)];
 
     this.element.addEventListener('submit', this.onSubmit);
     this.input.addEventListener('input', this.onInput);
@@ -68,7 +68,7 @@ export default class CardWidget {
     if (this.input.value.length > 0) {
       this.message.textContent = '';
       this.message.classList.add('warning');
-      this.paymentSystemImages.forEach((image) => image.classList.add('not-suitable'));
+      this.paySystemImages.forEach((image) => image.classList.add('not-suitable'));
       this.validationAndDefinition();
     }
   }
@@ -76,7 +76,7 @@ export default class CardWidget {
   onInput() {
     this.message.textContent = '';
     this.message.className = 'card-validator-message';
-    this.paymentSystemImages.forEach((image) => image.classList.remove('not-suitable'));
+    this.paySystemImages.forEach((image) => image.classList.remove('not-suitable'));
   }
 
   validationAndDefinition() {
@@ -103,11 +103,11 @@ export default class CardWidget {
       return;
     }
 
-    const paymentSystemImage = this.paymentSystemImages.find((image) => image.classList.contains(paymentSystem));
-    paymentSystemImage.classList.remove('not-suitable');
+    const paySystemImage = this.paySystemImages.find((image) => image.classList.contains(paymentSystem));
+    paySystemImage.classList.remove('not-suitable');
     this.message.insertAdjacentHTML(
       'beforeEnd',
-      `Номер карты ${cardNumber} прошёл проверку! Платёжная система — <strong>${paymentSystemImage.title}</strong>`,
+      `Номер карты ${cardNumber} прошёл проверку! Платёжная система — <strong>${paySystemImage.title}</strong>`,
     );
   }
 }
