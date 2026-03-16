@@ -103,7 +103,7 @@ export default class CardWidget {
       return;
     }
 
-    const paySystemImage = this.paySystemImages.find((image) => image.classList.contains(paySystem));
+    const paySystemImage = this.paySystemImages.find((img) => img.classList.contains(paySystem));
     paySystemImage.classList.remove('not-suitable');
     this.message.insertAdjacentHTML(
       'beforeEnd',
