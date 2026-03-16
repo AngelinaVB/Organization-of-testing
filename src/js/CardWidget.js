@@ -95,15 +95,15 @@ export default class CardWidget {
       return;
     }
 
-    const paymentSystem = definitionOfPaymentSystem(cardNumber);
+    const paySystem = definitionOfPaymentSystem(cardNumber);
     this.message.className = 'card-validator-message success';
 
-    if (paymentSystem === 'unknown') {
+    if (paySystem === 'unknown') {
       this.message.insertAdjacentHTML('beforeEnd', `Номер карты ${cardNumber} прошёл проверку! Платёжная система не определена`);
       return;
     }
 
-    const paySystemImage = this.paySystemImages.find((image) => image.classList.contains(paymentSystem));
+    const paySystemImage = this.paySystemImages.find((image) => image.classList.contains(paySystem));
     paySystemImage.classList.remove('not-suitable');
     this.message.insertAdjacentHTML(
       'beforeEnd',
